@@ -608,8 +608,9 @@
     }
 
     form.addEventListener("submit", function (event) {
-
-      validate()
+      const myForm = event.target;
+      const formData = new FormData(myForm);
+      validate(formData)
       event.preventDefault();
       if (!email.validity.valid) {
 
@@ -617,7 +618,7 @@
     }, false);
 
     // When user want to submit sondage
-    function validate() {
+    function validate(formData) {
       let data = {
         "visitor_name": $("#name").val(),
         "visitor_email": $("#email").val(),
@@ -628,11 +629,13 @@
       $.ajax
         ({
           type: "POST",
-          url: 'contact.php',
-          dataType: 'json',
-          contentType: 'application/json',
+          url: '/',
+          //dataType: 'json',
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          //contentType: 'application/json',
           async: false,
-          data: JSON.stringify(data),
+          //data: JSON.stringify(data),
+          body:new URLSearchParams(formData),
           success: (rs) => {
             if (rs.status == "200") {
               $("#ok").toggleClass("d-none")
