@@ -350,7 +350,7 @@
                                       outline-none
                                       focus-visible:shadow-none
                                       focus:border-primary
-                                      " pattern=[A-Z\sa-z]{3,20} required />
+                                      " pattern=[A-Z\sa-z]{3,20}  />
                     </div>
                     <div class="mb-6">
                       <input type="email" id="email" name="visitor_email" placeholder="mail" class="
@@ -363,10 +363,10 @@
                                       outline-none
                                       focus-visible:shadow-none
                                       focus:border-primary
-                                      " minlength="6" required />
+                                      " minlength="6"  />
                     </div>
                     <div class="mb-6">
-                      <input type="text" id="phone" name="visitor_phone" placeholder="number" class="
+                      <input value="" type="text" id="phone" name="visitor_phone" placeholder="number" class="
                                       w-full
                                       rounded
                                       py-3
@@ -630,8 +630,7 @@
     const handleSubmit = (event) => {
       event.preventDefault();
 
-      let myForm = event.target;
-      console.log(myForm.valid);
+      const myForm = event.target;
       const formData = new FormData(myForm);
 
       fetch("/", {
@@ -642,7 +641,7 @@
         .then(() => {
           const msg = "Thank you for contacting me, you will receive an answer within 24 hours.";
           const url = "https://assets2.lottiefiles.com/packages/lf20_unahkkgk.json"
-          alert(msg, url)
+          alerte(msg, url)
         }
         )
         .catch((error) => {
