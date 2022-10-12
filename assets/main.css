@@ -246,6 +246,11 @@ canvas {
         display: block !important;
     }
 
+    #gif{
+        width: auto !important;
+        height: auto !important;
+    }
+
     .contact_list_sm {
         display: block;
     }
